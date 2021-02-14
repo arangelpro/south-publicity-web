@@ -1,0 +1,116 @@
+@import '../variables';
+@import '../mixins';
+
+.MainHome{
+	@include linear-gradient($color-base, $color-primary);
+	font-family: $font-secundary;
+	font-size: $font-size-md;
+	color: white;
+	min-height: 200px;
+	.container {
+		@include container;
+	}
+}
+.MainHome-info {
+	display: flex;
+	flex-direction: column;
+	&-title {
+		font-family: $font-primary;
+		font-size: $font-size-xl;
+		text-align: justify;
+		margin-bottom: 10px;
+		color: $color-variant;
+	}
+	&-subtitle {
+		font-family: $font-primary;
+		font-size: $font-size-md;
+		text-align: justify;
+		margin-bottom: 20px;
+	}
+	&-description {
+		font-size: $font-size-md;
+		text-align: justify;
+	}
+}
+
+.MainHome-image {
+	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	.MainHome {
+		position: relative;
+		height: 48vw;
+		&::before{
+			content: "";
+			position:absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 30px;
+			@include linear-gradient($color-base, $color-primary);
+		}
+		.container {
+			margin: 0 10vw;
+			padding: 10% 0;
+		}
+	}
+	.MainHome-info{
+		&-title {
+			font-size: $font-size-xl-2;
+		}
+		&-subtitle {
+			font-size: $font-size-xl;
+		}
+	}
+	.MainHome-image {
+		display: flex;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		&_ilustration {
+			top: 0;
+		}
+		&_ilustration, &_neon {
+			position: absolute;
+			width: 33vw;			
+			right: 3vw;
+			z-index: 4;
+		}
+		&_neon {
+			animation-duration: 3s;
+			animation-name: slidein;
+			animation-iteration-count: infinite;
+			animation-delay: 4s;
+			animation-timing-function: ease-in-out;
+			//animation-direction: alternate;
+			top: 5px;
+		}
+		&_growth {
+			position: absolute;
+			width: 13vw;
+			top: 18vw;
+			right: 3vw;
+			z-index: 5;
+		}
+	}
+	  
+	@keyframes slidein {
+		0% {
+			top: 5px;
+		}	  
+		30% {
+			top: -30px;
+		}
+
+		60% {
+			top: 30px;
+		}
+
+		100% {
+			top: 5px;
+	   }
+	}
+}
